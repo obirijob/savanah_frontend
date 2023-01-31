@@ -16,11 +16,19 @@ function Login({ setUser }) {
         </span>
         <p>Store your photos. Don't miss a Memory!</p>
         <Google
+          userDataB={async u => {
+            const { success, data } = await postRequest('/users/login-b', u)
+            const res = await data.json()
+            if (success) {
+              setUser(res)
+            } else {
+              console.log('error', res)
+            }
+          }}
           userData={async u => {
             const { success, data } = await postRequest('/users/login', u)
             const res = await data.json()
             if (success) {
-              console.log('success', res)
               setUser(res)
             } else {
               console.log('error', res)

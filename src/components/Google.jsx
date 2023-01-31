@@ -5,11 +5,12 @@ import { useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
-function Google({ userData }) {
+function Google({ userData, userDataB }) {
   const login = useGoogleLogin({
     onSuccess: resp => {
-      userData(resp)
+      userDataB(resp)
     },
+    // flow: 'auth-code',
     onError: err => console.log(err),
   })
 
@@ -25,6 +26,11 @@ function Google({ userData }) {
       <FontAwesomeIcon icon={faGoogle} />
       <span>Log In</span>
     </button>
+    // <GoogleLogin
+    //   onSuccess={resp => userData(resp)}
+    //   onError={resp => console.log(resp)}
+    //   useOneTap
+    // />
   )
 }
 
