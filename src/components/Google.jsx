@@ -1,13 +1,24 @@
 /** @format */
 
 import React from 'react'
-import { useGoogleOneTapLogin } from '@react-oauth/google'
+import { useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google'
 
-function Google() {
-  return useGoogleOneTapLogin({
-    onSuccess: resp => console.log(resp),
+function Google({ userData }) {
+  const login = useGoogleLogin({
+    onSuccess: resp => {
+      userData(resp)
+    },
     onError: err => console.log(err),
   })
+
+  useGoogleOneTapLogin({
+    onSuccess: resp => {
+      userData(resp)
+    },
+    onError: err => console.log(err),
+  })
+
+  return <button onClick={login}>Use Google</button>
 }
 
 export default Google

@@ -1,0 +1,30 @@
+/** @format */
+
+@font-face {
+  font-family: l;
+  src: url('./fonts/l.ttf');
+}
+
+@font-face {
+  font-family: r;
+  src: url('./fonts/r.ttf');
+}
+
+@font-face {
+  font-family: m;
+  src: url('./fonts/m.ttf');
+}
+
+@font-face {
+  font-family: sb;
+  src: url('./fonts/sb.ttf');
+}
+
+@font-face {
+  font-family: b;
+  src: url('./fonts/b.ttf');
+}
+
+* {
+  font-family: r;
+}
