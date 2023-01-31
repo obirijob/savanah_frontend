@@ -33,3 +33,39 @@
   font-size: 40px;
   font-family: b;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+  gap: 30px;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    button {
+      background: black;
+      color: white;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      padding: 5px 20px;
+      border-radius: 5px;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        letter-spacing: 1px;
+      }
+    }
+
+    img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 /** @format */
 
-async function getRequest(url, headers) {
-  const uri = `${process.env.REACT_APP_BACKEND_URL}${url}`
+async function getRequest(url, headers, fake = false) {
+  const uri = `${
+    fake ? process.env.REACT_APP_FAKE_URL : process.env.REACT_APP_BACKEND_URL
+  }${url}`
   try {
     const response = await fetch(uri, {
       method: 'GET',
@@ -11,9 +13,11 @@ async function getRequest(url, headers) {
       },
     })
     if (response.ok) {
-      return { success: true, data: response }
+      const r = await response.json()
+      return { success: true, data: r }
     } else {
-      return { success: false, response }
+      const r = await response.text()
+      return { success: false, data: r }
     }
   } catch (error) {
     return { success: false, response: error }
