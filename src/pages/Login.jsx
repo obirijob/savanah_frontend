@@ -14,6 +14,7 @@ function Login({ setUser }) {
         <span className="title" style={{ textAlign: 'center' }}>
           The home for your <br /> Memories
         </span>
+        <p>Store your photos. Don't miss a Memory!</p>
         <Google
           userData={async u => {
             const { success, data } = await postRequest('/users/login', u)

@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 function Google({ userData }) {
   const login = useGoogleLogin({
@@ -19,8 +21,9 @@ function Google({ userData }) {
   })
 
   return (
-    <button className="button" onClick={login}>
-      Use Google
+    <button className="button btn-landing" onClick={login}>
+      <FontAwesomeIcon icon={faGoogle} />
+      <span>Log In</span>
     </button>
   )
 }
