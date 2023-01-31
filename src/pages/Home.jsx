@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import getRequest from '../helpers/getRequest'
 import Loading from './Loading'
 
@@ -9,16 +10,24 @@ function Home() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetchUsers()
+    fetchUsersandAlbums()
   }, [])
 
-  async function fetchUsers() {
+  async function fetchUsersandAlbums() {
     setUsers([])
     setLoading(true)
     const { success, data } = await getRequest('/users', {}, true)
+    const alb = await getRequest('/albums', {}, true)
+
     setLoading(false)
+
     if (success) {
-      setUsers(data)
+      let newUserData = []
+      for (let u of data) {
+        const mine = alb.data.filter(a => a.userId === u.id)
+        newUserData.push({ ...u, albums: mine.length })
+      }
+      setUsers(newUserData)
     }
   }
 
@@ -26,7 +35,7 @@ function Home() {
     <div className="home">
       <span className="title">Users</span>
       {loading ? (
-        <Loading />
+        <div>Loading...</div>
       ) : (
         <table>
           <thead>
@@ -35,19 +44,19 @@ function Home() {
               <th>Name</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Website</th>
+              <th>Albums</th>
             </tr>
           </thead>
           <tbody>
-            {users.map(({ id, name, username, email, website }) => (
+            {users.map(({ id, name, username, email, albums }) => (
               <tr>
-                <td>{id}</td>
-                <td>
-                  <a>{name}</a>
+                <td head="id">{id}</td>
+                <td head="name">
+                  <NavLink to={`/user/${id}`}>{name}</NavLink>
                 </td>
-                <td>{username}</td>
-                <td>{email}</td>
-                <td>{website}</td>
+                <td head="username">{username}</td>
+                <td head="email">{email}</td>
+                <td head="albums">{albums}</td>
               </tr>
             ))}
           </tbody>
