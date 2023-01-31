@@ -9,8 +9,11 @@ import '../styles/loading.scss'
 
 function Login({ setUser }) {
   return (
-    <div>
+    <div className="login">
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <span className="title" style={{ textAlign: 'center' }}>
+          The home for your <br /> Memories
+        </span>
         <Google
           userData={async u => {
             const { success, data } = await postRequest('/users/login', u)

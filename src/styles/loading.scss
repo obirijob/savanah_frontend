@@ -19,3 +19,18 @@
     transform: rotate(360deg);
   }
 }
+
+.login {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.button {
+  background: black;
+  color: white;
+}

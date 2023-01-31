@@ -21,4 +21,4 @@ async function postRequest(url, body, headers) {
   }
 }
 
-module.exports = postRequest
+export default postRequest

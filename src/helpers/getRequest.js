@@ -20,4 +20,4 @@ async function getRequest(url, headers) {
   }
 }
 
-module.exports = getRequest
+export default getRequest

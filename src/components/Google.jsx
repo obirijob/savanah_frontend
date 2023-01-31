@@ -18,7 +18,11 @@ function Google({ userData }) {
     onError: err => console.log(err),
   })
 
-  return <button onClick={login}>Use Google</button>
+  return (
+    <button className="button" onClick={login}>
+      Use Google
+    </button>
+  )
 }
 
 export default Google
