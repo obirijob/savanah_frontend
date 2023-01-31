@@ -150,10 +150,46 @@
     background-color: lightgray;
     text-align: center;
     box-shadow: transparentize(black, 0.8) 0 0 20px;
+    transition: 0.3s ease-in-out;
+    position: relative;
+
     img {
       width: 100%;
       object-fit: cover;
     }
+
+    &:hover {
+      transform: scale(1.1);
+      .caption {
+        background: black;
+        color: white;
+        padding: 5px;
+      }
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0px;
+      margin: 10px;
+      font-size: small;
+      transition: 0.3s ease-in-out;
+    }
     // padding: 20px;
+  }
+
+  .photo-detail {
+    max-height: 500px;
+    max-width: 500px;
+    box-shadow: transparentize(black, 0.8) 0 0 30px;
+  }
+
+  .edit-button {
+    color: blue;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      color: black;
+      transform: scale(1.5);
+    }
   }
 }

@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import getRequest from '../helpers/getRequest'
 
 function Album() {
@@ -30,13 +30,15 @@ function Album() {
     <>Please wait...</>
   ) : album ? (
     <div>
+      <span className="title">Album</span>
       <p>{album.title}</p>
       <p>
         <div className="grid">
-          {photos.map(({ thumbnailUrl }) => (
-            <div className="grid-item">
+          {photos.map(({ id, thumbnailUrl, title }) => (
+            <NavLink to={`/photo/${id}`} className="grid-item">
               <img src={thumbnailUrl} alt="" srcset="" />
-            </div>
+              <div className="caption">{title}</div>
+            </NavLink>
           ))}
         </div>
       </p>
