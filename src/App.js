@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import Login from './pages/Login'
 import getRequest from './helpers/getRequest'
 import Loading from './pages/Loading'
-import { AnimatePresence } from 'framer-motion'
 
 function App() {
   const [token, setToken] = useState()
@@ -30,22 +29,18 @@ function App() {
   }
 
   return loading ? (
-    <AnimatePresence mode="wait">
-      <Loading />
-    </AnimatePresence>
+    <Loading />
   ) : (
     <div className="app">
       {user ? (
         <>User</>
       ) : (
-        <AnimatePresence mode="wait">
-          <Login
-            setUser={u => {
-              localStorage.setItem('token', u.token)
-              setToken(u.token)
-            }}
-          />
-        </AnimatePresence>
+        <Login
+          setUser={u => {
+            localStorage.setItem('token', u.token)
+            setToken(u.token)
+          }}
+        />
       )}
     </div>
   )
