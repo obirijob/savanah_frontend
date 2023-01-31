@@ -126,15 +126,22 @@
         font-family: b;
         font-size: 12px;
         text-transform: uppercase;
-        background: black;
-        color: white;
+        background: transparentize(black, 0.9);
+        color: black;
         padding: 5px;
         margin-right: 5px;
         white-space: nowrap;
+        font-size: 10px;
+      }
+
+      tr:nth-child(odd) {
+        border: solid 1px black;
       }
 
       tr:nth-child(even) {
-        background-color: transparentize(black, 0.9);
+        background-color: transparentize(black, 0.8);
+        margin: 10px 0;
+        border: solid black 1px;
       }
     }
   }
