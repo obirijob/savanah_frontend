@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import getRequest from '../helpers/getRequest'
 import Loading from './Loading'
 
-function Home( {
+function Home() {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(false)
 
